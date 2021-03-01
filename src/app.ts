@@ -5,6 +5,22 @@
  */
 //console.log(anchor.href);
 //Interfaces
+import { Invoice } from './classes/Invoice.js';
+import { Payment } from './classes/Payment.js';
+import { HasFormatter } from './interfaces/HasFormatter.js';
+
+/* let docOne: HasFormatter;
+let docTwo: HasFormatter;
+
+docOne = new Invoice('Sashko', 'web dev', 250);
+docTwo = new Payment('Leshka', 'some work', 770);
+
+let docs: HasFormatter[] = [];
+docs.push(docOne);
+docs.push(docTwo);
+
+console.log(docs) */
+
 interface isPerson {
     name: string;
     age: number;
@@ -29,9 +45,7 @@ const greetPerson = (person: isPerson) => {
 }
 greetPerson(me);
 
-console.log(me)
-
-import { Invoice } from './classes/Invoice.js';
+/* console.log(me)
 
 const invoiceOne = new Invoice('Sashiko', 'some work', 250);
 const invoiceTwo = new Invoice('Dimiko', 'some additional work', 300);
@@ -46,7 +60,7 @@ invoiceTwo.amount = 500;
 invoices.forEach(inv => {
     console.log(inv.client, inv.amount, inv.format());
 });
-
+ */
 
 //console.log(invoices);
 
@@ -59,18 +73,27 @@ const form = document.querySelector('.new-item-form') as HTMLFormElement;
 //console.log(form.children);
 //inputs
 const type = document.querySelector('#type') as HTMLSelectElement;
-const toform = document.querySelector('#tofrom') as HTMLInputElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
 const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
+    
+    let doc: HasFormatter;
+    if(type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    } else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
     console.log(
-        type.value,
-        toform.value,
+        /* type.value,
+        tofrom.value,
         details.value,
-        amount.valueAsNumber
+        amount.valueAsNumber */
+        doc
     );
+    
 });
 
 
