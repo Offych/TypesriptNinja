@@ -7,11 +7,15 @@
 //console.log(anchor.href);
 //Classes
 var Invoice = /** @class */ (function () {
-    function Invoice(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    /* readonly client: string;
+    private details: string;
+    amount: number; */
+    function Invoice(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
     }
+    ;
     Invoice.prototype.format = function () {
         return this.client + " owes $" + this.amount + " for " + this.details;
     };
@@ -22,10 +26,12 @@ var invoiceTwo = new Invoice('Dimiko', 'some additional work', 300);
 var invoices = [];
 invoices.push(invoiceOne);
 invoices.push(invoiceTwo);
-invoiceOne.client = 'Leshka';
+//invoiceOne.client = 'Leshka';
 invoiceTwo.amount = 500;
-console.log(invoiceOne, invoiceTwo);
-console.log(invoices);
+invoices.forEach(function (inv) {
+    console.log(inv.client, inv.amount, inv.format());
+});
+//console.log(invoices);
 //console.log(invoiceOne, invoiceTwo);
 //const form = document.querySelector('form')!;
 var form = document.querySelector('.new-item-form');
