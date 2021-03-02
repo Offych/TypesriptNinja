@@ -54,12 +54,14 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     console.log(
     /* type.value,
@@ -101,3 +103,6 @@ const docFour = {
 };
 console.log(docThree);
 console.log(docFour);
+//Tuples
+let arr = ['string', 25, true];
+let tup = ['alex', 24, true];
