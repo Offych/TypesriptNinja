@@ -114,22 +114,28 @@ let docOne = addUID({name: 'Blablabla', age: 32});
 console.log(docOne);
 
 //Generics with Interfaces
+//ENUMS
+enum ResourceName { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
+console.log(ResourceName)
+
 interface Resource<T> {
     uid: number;
-    resourceName: string;
+    resourceName: ResourceName;
     data: T ;
 }
 
 const docThree: Resource<string> = {
     uid: 1,
-    resourceName: 'person',
+    resourceName: ResourceName.BOOK,
     data: 'ssss'
 }
 const docFour: Resource<string[]> = {
     uid: 2,
-    resourceName: 'list',
+    resourceName: ResourceName.PERSON,
     data: ['tea', '...']
 }
 
 console.log(docThree);
 console.log(docFour);
+
+

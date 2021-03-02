@@ -77,14 +77,26 @@ const addUID = (obj) => {
 let docOne = addUID({ name: 'Blablabla', age: 32 });
 //let docTwo = addUID('hello')
 console.log(docOne);
+//Generics with Interfaces
+//ENUMS
+var ResourceName;
+(function (ResourceName) {
+    ResourceName[ResourceName["BOOK"] = 0] = "BOOK";
+    ResourceName[ResourceName["AUTHOR"] = 1] = "AUTHOR";
+    ResourceName[ResourceName["FILM"] = 2] = "FILM";
+    ResourceName[ResourceName["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceName[ResourceName["PERSON"] = 4] = "PERSON";
+})(ResourceName || (ResourceName = {}));
+;
+console.log(ResourceName);
 const docThree = {
     uid: 1,
-    resourceName: 'person',
+    resourceName: ResourceName.BOOK,
     data: 'ssss'
 };
 const docFour = {
     uid: 2,
-    resourceName: 'list',
+    resourceName: ResourceName.PERSON,
     data: ['tea', '...']
 };
 console.log(docThree);
